@@ -1,6 +1,6 @@
 # HoneyBadger v2
 
-HoneyBadger is a framework for targeted geolocation. While honeypots are traditionally used to passively detect malicious actors, HoneyBadger is an Active Defense tool to determine who the malicious actor is and where they are located. HoneyBadger leverages "agents" built in various technologies that harvest the requisite information from the target host in order to geolocate them. These agents report back to the HoneyBadger API, where the data is stored and made available in the HoneyBadger user interface.
+HoneyBadger is a framework for targeted geolocation. While honeypots are traditionally used to passively detect malicious actors, HoneyBadger is an Active Defense tool to determine who the malicious actor is and where they are located. HoneyBadger leverages "agents", built in various technologies that harvest the requisite information from the target host in order to geolocate them. These agents report back to the HoneyBadger API, where the data is stored and made available in the HoneyBadger user interface.
 
 An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide and Seek: Post-Exploitation Style](http://youtu.be/VJTrRMqHU5U)" from ShmooCon 2013. The associated Metasploit Framework modules mentioned in the above presentation can be found [here](https://github.com/v10l3nt/metasploit-framework/tree/master/modules/auxiliary/badger). Note: These modules have not been updated to work with v2 of the API.
 
@@ -8,7 +8,7 @@ An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide an
 
 ### Pre-requisites
 
-* Python 2.x
+* Python 3.x
 
 ### Installation (Ubuntu and OS X)
 
@@ -16,7 +16,7 @@ An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide an
 2. Clone the HoneyBadger repository.
 
     ```
-    $ git clone https://github.com/lanmaster53/honeybadger.git
+    $ git clone https://github.com/adhdproject/honeybadger.git
     ```
 
 3. Install the dependencies.
@@ -34,11 +34,21 @@ An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide an
     >>> honeybadger.initdb(<username>, <password>)
     ```
 
-5. Start the HoneyBadger server.
+5. Start the HoneyBadger server. API keys are required to use maps and geolocation services.
 
     ```
-    $ python ./honeybadger.py
+    $ python ./honeybadger.py -gk <GOOGLE_API_KEY> -ik <IPSTACK_API_KEY>
     ```
+
+    Honeybadger will still run without the API keys, but mapping and geolocation functionality will be limited as a result.
+
+    View usage information with either of the following:
+
+   ```
+   $ python ./honeybadger.py -h
+   $ python ./honeybadger.py --help
+   ```
+
 
 6. Visit the application and authenticate.
 7. Add users and targets as needed using their respective pages.
@@ -89,10 +99,20 @@ Windows:
 cmd.exe /c netsh wlan show networks mode=bssid | findstr "SSID Signal Channel"
 ```
 
+There is a powershell script in the util directory that can be used to automatically send data to the server:
+```
+powershell .\wireless_survey.ps1 -uri <URI>
+```
+
 Linux:
 
 ```
 /bin/sh -c iwlist scan | egrep 'Address|ESSID|Signal'
+```
+
+There is a shell script in the util directory that can be used to automatically send data to the server:
+```
+bash ./wireless_survey.sh <URL>
 ```
 
 OS X:

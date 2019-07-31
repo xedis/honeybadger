@@ -63,7 +63,7 @@ class Beacon(BaseModel):
 class Target(BaseModel):
     __tablename__ = 'targets'
     name = db.Column(db.String)
-    guid = db.Column(db.String, default=generate_guid())
+    guid = db.Column(db.String, default=generate_guid)
     beacons = db.relationship('Beacon', cascade="all,delete", backref='target', lazy='dynamic')
 
     @property
@@ -95,10 +95,10 @@ class User(BaseModel):
 
     @password.setter
     def password(self, password):
-        self.password_hash = bcrypt.generate_password_hash(binascii.hexlify(password))
+        self.password_hash = bcrypt.generate_password_hash(binascii.hexlify(password.encode()))
 
     def check_password(self, password):
-        return bcrypt.check_password_hash(self.password_hash, binascii.hexlify(password))
+        return bcrypt.check_password_hash(self.password_hash, binascii.hexlify(password.encode()))
 
     @property
     def is_admin(self):
