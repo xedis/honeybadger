@@ -21,7 +21,7 @@ def roles_required(*roles):
         return wrapped
     return wrapper
 
-def async(func):
+def async_wrapper(func):
     def wrapper(*args, **kwargs):
         thr = Thread(target=func, args=args, kwargs=kwargs)
         thr.start()
