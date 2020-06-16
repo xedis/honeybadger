@@ -1,4 +1,4 @@
-# HoneyBadger v2
+# HoneyBadger v3
 
 HoneyBadger is a framework for targeted geolocation. While honeypots are traditionally used to passively detect malicious actors, HoneyBadger is an Active Defense tool to determine who the malicious actor is and where they are located. HoneyBadger leverages "agents", built in various technologies that harvest the requisite information from the target host in order to geolocate them. These agents report back to the HoneyBadger API, where the data is stored and made available in the HoneyBadger user interface.
 
