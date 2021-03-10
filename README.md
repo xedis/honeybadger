@@ -12,7 +12,7 @@ An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide an
 
 ### Installation (Ubuntu and OS X)
 
-1. Install [pip](https://pip.pypa.io/en/stable/installing/).
+1. Install [pip](https://pip.pypa.io/en/stable/installing/). (Make sure to use `pip3` if you also have Python2 installed)
 2. Clone the HoneyBadger repository.
 
     ```
@@ -31,7 +31,7 @@ An early prototype of HoneyBadger (v1) can be seen in the presentation "[Hide an
     ```
     $ python
     >>> import honeybadger
-    >>> honeybadger.initdb(<username>, <password>)
+    >>> honeybadger.initdb("<username>", "<password>")
     ```
 
 5. Start the HoneyBadger server. API keys are required to use maps and geolocation services.
