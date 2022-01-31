@@ -4,4 +4,3 @@ Flask-SQLAlchemy
 Flask-CORS
 requests
 gunicorn
-nginx
